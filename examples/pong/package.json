@@ -1,0 +1,14 @@
+{
+  "name": "@ecs/example-pong",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": { "build:project": "node --experimental-strip-types generate-project.ts" },
+  "dependencies": {
+    "@ecs/core": "*",
+    "@ecs/rendering": "*",
+    "@ecs/scene": "*",
+    "@ecs/scripting": "*",
+    "@ecs/ui": "*"
+  }
+}

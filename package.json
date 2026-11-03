@@ -1,0 +1,38 @@
+{
+  "name": "ecs-engine",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "engines": { "node": ">=22.12.0" },
+  "workspaces": ["apps/*", "packages/*", "examples/*"],
+  "scripts": {
+    "dev": "npm run build:export-runtime && vite --config vite.config.ts",
+    "build:export-runtime": "vite build --config export-runtime.config.ts",
+    "typecheck": "tsc --noEmit",
+    "build": "npm run typecheck && npm run build --workspace @ecs/editor",
+    "generate:showcase": "npm run build --workspace @ecs/example-showcase",
+    "preview": "vite preview --config vite.config.ts",
+    "test:core": "node --experimental-strip-types --test packages/core/test/*.test.ts",
+    "test:runtime": "node --experimental-strip-types --test packages/runtime/test/*.test.ts",
+    "test:multiplayer": "node --experimental-strip-types --test packages/multiplayer/test/*.test.ts",
+    "test:scene": "node --experimental-strip-types --test packages/scene/test/*.test.ts",
+    "test:assets": "node --experimental-strip-types --test packages/assets/test/*.test.ts",
+    "test:audio": "node --experimental-strip-types --test packages/audio/test/*.test.ts",
+    "test:ui": "node --experimental-strip-types --test packages/ui/test/*.test.ts",
+    "test:rendering": "node --experimental-strip-types --test packages/rendering/test/*.test.ts",
+    "test:scripting": "node --experimental-strip-types --test packages/scripting/test/*.test.ts packages/scripting/test/*.test.js",
+    "test:pong": "node --experimental-strip-types --test examples/pong/test/*.test.ts",
+    "test:editor-unit": "node --experimental-strip-types --test apps/editor/test/*.test.ts",
+    "test:renderer-browser": "playwright test --config playwright.renderer.config.ts",
+    "test:browser-matrix": "playwright test --config playwright.matrix.config.ts",
+    "start:multiplayer-host": "npm run start --workspace @ecs/multiplayer-host",
+    "test": "playwright test"
+  },
+  "devDependencies": {
+    "@playwright/test": "1.56.1",
+    "@types/node": "22.18.6",
+    "@types/three": "0.180.0",
+    "typescript": "5.9.3",
+    "vite": "7.3.7"
+  }
+}

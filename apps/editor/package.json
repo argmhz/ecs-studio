@@ -1,0 +1,31 @@
+{
+  "name": "@ecs/editor",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "vite --config ../../vite.config.ts",
+    "build": "vite build --config ../../export-runtime.config.ts && vite build --config ../../vite.config.ts",
+    "preview": "vite preview --config ../../vite.config.ts"
+  },
+  "dependencies": {
+    "@ecs/assets": "*",
+    "@ecs/audio": "*",
+    "@ecs/browser-preview": "*",
+    "@ecs/core": "*",
+    "@ecs/example-physics-playground": "*",
+    "@ecs/rendering": "*",
+    "@ecs/runtime": "*",
+    "@ecs/scene": "*",
+    "@ecs/scripting": "*",
+    "@ecs/ui": "*",
+    "fflate": "^0.8.3",
+    "monaco-editor": "0.52.2",
+    "react": "^19.3.1",
+    "react-dom": "^19.3.1"
+  },
+  "devDependencies": {
+    "@types/react": "^19.3.0",
+    "@types/react-dom": "^19.3.0"
+  }
+}

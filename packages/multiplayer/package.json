@@ -1,0 +1,9 @@
+{
+  "name": "@ecs/multiplayer",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "exports": { ".": "./src/index.ts", "./client": "./src/client.ts" },
+  "dependencies": { "@ecs/core": "*", "@ecs/runtime": "*", "ws": "8.22.1" },
+  "devDependencies": { "@types/ws": "8.18.2" }
+}

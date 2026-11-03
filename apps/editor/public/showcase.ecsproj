@@ -1,0 +1,1235 @@
+{
+  "format": "ecs-project",
+  "version": 7,
+  "projectName": "ECS Studio Showcase",
+  "scene": {
+    "format": "ecs-scene",
+    "version": 1,
+    "sceneId": "scene:main",
+    "entities": [
+      {
+        "id": "player",
+        "components": [
+          {
+            "typeId": "engine.transform2d",
+            "version": 1,
+            "data": {
+              "x": -2.5,
+              "y": 1.5,
+              "rotation": 0,
+              "scaleX": 1,
+              "scaleY": 1
+            }
+          },
+          {
+            "typeId": "engine.name",
+            "version": 1,
+            "data": {
+              "value": "Player"
+            }
+          },
+          {
+            "typeId": "engine.spriteRenderer2d",
+            "version": 2,
+            "data": {
+              "asset": {
+                "assetId": "asset:showcase:sheet"
+              },
+              "region": {
+                "atlasId": "atlas:showcase:main",
+                "regionId": "region:hero"
+              },
+              "width": 0.85,
+              "height": 0.85,
+              "order": 3,
+              "tint": "#ffffff"
+            }
+          },
+          {
+            "typeId": "engine.spriteAnimation2d",
+            "version": 1,
+            "data": {
+              "clipsJson": "[{\"id\":\"glow\",\"name\":\"Glow\",\"duration\":1,\"loop\":true,\"frames\":[{\"assetId\":\"asset:showcase:sheet\",\"region\":{\"atlasId\":\"atlas:showcase:main\",\"regionId\":\"region:hero\"},\"duration\":0.5},{\"assetId\":\"asset:showcase:sheet\",\"region\":{\"atlasId\":\"atlas:showcase:main\",\"regionId\":\"region:gem\"},\"duration\":0.5}],\"tracks\":[{\"componentTypeId\":\"engine.spriteRenderer2d\",\"field\":\"tint\",\"keys\":[{\"time\":0,\"value\":\"#79d7ff\"},{\"time\":0.5,\"value\":\"#c28bff\"}]}]}]",
+              "clipId": "glow",
+              "playOnStart": true,
+              "speed": 1
+            }
+          },
+          {
+            "typeId": "engine.audioSource2d",
+            "version": 1,
+            "data": {
+              "asset": {
+                "assetId": "asset:showcase:chime"
+              },
+              "group": "effects",
+              "volume": 0.7,
+              "loop": false,
+              "playOnStart": false
+            }
+          },
+          {
+            "typeId": "engine.scriptBinding",
+            "version": 2,
+            "data": {
+              "enabled": true,
+              "codePath": "scripts/player.ts",
+              "graphPath": "scripts/player.graph.json",
+              "speed": 4
+            }
+          }
+        ]
+      },
+      {
+        "id": "crate",
+        "components": [
+          {
+            "typeId": "engine.transform2d",
+            "version": 1,
+            "data": {
+              "x": 1.2,
+              "y": 4,
+              "rotation": 0,
+              "scaleX": 1,
+              "scaleY": 1
+            }
+          },
+          {
+            "typeId": "engine.name",
+            "version": 1,
+            "data": {
+              "value": "Physics Crate"
+            }
+          },
+          {
+            "typeId": "engine.spriteRenderer2d",
+            "version": 2,
+            "data": {
+              "asset": {
+                "assetId": "asset:showcase:sheet"
+              },
+              "region": {
+                "atlasId": "atlas:showcase:main",
+                "regionId": "region:stone"
+              },
+              "width": 0.9,
+              "height": 0.9,
+              "order": 2,
+              "tint": "#ffc46d"
+            }
+          },
+          {
+            "typeId": "engine.physics2d",
+            "version": 1,
+            "data": {
+              "bodyType": "Dynamic",
+              "gravityScale": 1
+            }
+          },
+          {
+            "typeId": "engine.collider2d",
+            "version": 1,
+            "data": {
+              "shape": "Box",
+              "friction": 0.7,
+              "restitution": 0.45,
+              "sensor": false,
+              "groups": 1,
+              "mask": 65535
+            }
+          },
+          {
+            "typeId": "engine.scriptBinding",
+            "version": 2,
+            "data": {
+              "enabled": true,
+              "codePath": "scripts/crate.ts",
+              "graphPath": "",
+              "speed": 1
+            }
+          }
+        ]
+      },
+      {
+        "id": "gem",
+        "components": [
+          {
+            "typeId": "engine.transform2d",
+            "version": 1,
+            "data": {
+              "x": 3.2,
+              "y": 1.6,
+              "rotation": 0,
+              "scaleX": 1,
+              "scaleY": 1
+            }
+          },
+          {
+            "typeId": "engine.name",
+            "version": 1,
+            "data": {
+              "value": "Animated Gem"
+            }
+          },
+          {
+            "typeId": "engine.spriteRenderer2d",
+            "version": 2,
+            "data": {
+              "asset": {
+                "assetId": "asset:showcase:sheet"
+              },
+              "region": {
+                "atlasId": "atlas:showcase:main",
+                "regionId": "region:gem"
+              },
+              "width": 0.75,
+              "height": 0.75,
+              "order": 4,
+              "tint": "#ffffff"
+            }
+          },
+          {
+            "typeId": "engine.spriteAnimation2d",
+            "version": 1,
+            "data": {
+              "clipsJson": "[{\"id\":\"pulse\",\"name\":\"Pulse\",\"duration\":0.8,\"loop\":true,\"frames\":[{\"assetId\":\"asset:showcase:sheet\",\"region\":{\"atlasId\":\"atlas:showcase:main\",\"regionId\":\"region:gem\"},\"duration\":0.4},{\"assetId\":\"asset:showcase:sheet\",\"region\":{\"atlasId\":\"atlas:showcase:main\",\"regionId\":\"region:hero\"},\"duration\":0.4}],\"tracks\":[]}]",
+              "clipId": "pulse",
+              "playOnStart": true,
+              "speed": 1
+            }
+          },
+          {
+            "typeId": "engine.scriptBinding",
+            "version": 2,
+            "data": {
+              "enabled": true,
+              "codePath": "",
+              "graphPath": "scripts/gem.graph.json",
+              "speed": 1
+            }
+          }
+        ]
+      },
+      {
+        "id": "ground",
+        "components": [
+          {
+            "typeId": "engine.transform2d",
+            "version": 1,
+            "data": {
+              "x": 0,
+              "y": -2.2,
+              "rotation": 0,
+              "scaleX": 1,
+              "scaleY": 1
+            }
+          },
+          {
+            "typeId": "engine.name",
+            "version": 1,
+            "data": {
+              "value": "Ground"
+            }
+          },
+          {
+            "typeId": "engine.spriteRenderer2d",
+            "version": 2,
+            "data": {
+              "asset": {
+                "assetId": "asset:showcase:sheet"
+              },
+              "region": null,
+              "width": 12,
+              "height": 0.5,
+              "order": 1,
+              "tint": "#596b79"
+            }
+          },
+          {
+            "typeId": "engine.physics2d",
+            "version": 1,
+            "data": {
+              "bodyType": "Fixed",
+              "gravityScale": 0
+            }
+          },
+          {
+            "typeId": "engine.collider2d",
+            "version": 1,
+            "data": {
+              "shape": "Box",
+              "friction": 0.7,
+              "restitution": 0.3,
+              "sensor": false,
+              "groups": 1,
+              "mask": 65535
+            }
+          }
+        ]
+      },
+      {
+        "id": "tilemap",
+        "components": [
+          {
+            "typeId": "engine.transform2d",
+            "version": 1,
+            "data": {
+              "x": 6.4,
+              "y": 1,
+              "rotation": 0,
+              "scaleX": 1,
+              "scaleY": 1
+            }
+          },
+          {
+            "typeId": "engine.name",
+            "version": 1,
+            "data": {
+              "value": "Tilemap Wall"
+            }
+          },
+          {
+            "typeId": "engine.tilemap2d",
+            "version": 1,
+            "data": {
+              "width": 4,
+              "height": 5,
+              "tileSize": 1,
+              "layersJson": "[{\"id\":\"layer:ground\",\"name\":\"Ground\",\"visible\":true,\"collidable\":true,\"cells\":[\"tile:grass\",\"tile:grass\",\"tile:grass\",\"tile:grass\",\"tile:grass\",null,null,\"tile:grass\",\"tile:grass\",null,null,\"tile:grass\",\"tile:grass\",null,null,\"tile:grass\",\"tile:grass\",null,null,\"tile:grass\"]}]",
+              "tilesJson": "[{\"id\":\"tile:grass\",\"asset\":{\"assetId\":\"asset:showcase:sheet\"},\"region\":{\"atlasId\":\"atlas:showcase:main\",\"regionId\":\"region:grass\"},\"neighborGroup\":\"grass\"},{\"id\":\"tile:stone\",\"asset\":{\"assetId\":\"asset:showcase:sheet\"},\"region\":{\"atlasId\":\"atlas:showcase:main\",\"regionId\":\"region:stone\"},\"neighborGroup\":\"stone\"}]"
+            }
+          }
+        ]
+      },
+      {
+        "id": "ui-canvas",
+        "components": [
+          {
+            "typeId": "engine.transform2d",
+            "version": 1,
+            "data": {
+              "x": 0,
+              "y": 0,
+              "rotation": 0,
+              "scaleX": 1,
+              "scaleY": 1
+            }
+          },
+          {
+            "typeId": "engine.name",
+            "version": 1,
+            "data": {
+              "value": "UI Canvas"
+            }
+          },
+          {
+            "typeId": "engine.uiCanvas",
+            "version": 1,
+            "data": {
+              "referenceWidth": 800,
+              "referenceHeight": 600,
+              "scaleMode": "fit"
+            }
+          }
+        ]
+      },
+      {
+        "id": "ui-title",
+        "components": [
+          {
+            "typeId": "engine.transform2d",
+            "version": 1,
+            "data": {
+              "x": 0,
+              "y": 0,
+              "rotation": 0,
+              "scaleX": 1,
+              "scaleY": 1
+            }
+          },
+          {
+            "typeId": "engine.parent",
+            "version": 1,
+            "data": {
+              "parentId": "ui-canvas"
+            }
+          },
+          {
+            "typeId": "engine.name",
+            "version": 1,
+            "data": {
+              "value": "Title"
+            }
+          },
+          {
+            "typeId": "engine.uiText",
+            "version": 1,
+            "data": {
+              "anchorMinX": 0,
+              "anchorMinY": 0,
+              "anchorMaxX": 0,
+              "anchorMaxY": 0,
+              "offsetMinX": 20,
+              "offsetMinY": 16,
+              "offsetMaxX": 560,
+              "offsetMaxY": 58,
+              "text": "ECS STUDIO SHOWCASE",
+              "color": "#ffffff",
+              "fontSize": 26,
+              "align": "left"
+            }
+          }
+        ]
+      },
+      {
+        "id": "ui-status",
+        "components": [
+          {
+            "typeId": "engine.transform2d",
+            "version": 1,
+            "data": {
+              "x": 0,
+              "y": 0,
+              "rotation": 0,
+              "scaleX": 1,
+              "scaleY": 1
+            }
+          },
+          {
+            "typeId": "engine.parent",
+            "version": 1,
+            "data": {
+              "parentId": "ui-canvas"
+            }
+          },
+          {
+            "typeId": "engine.name",
+            "version": 1,
+            "data": {
+              "value": "Status"
+            }
+          },
+          {
+            "typeId": "engine.uiText",
+            "version": 1,
+            "data": {
+              "anchorMinX": 0,
+              "anchorMinY": 0,
+              "anchorMaxX": 0,
+              "anchorMaxY": 0,
+              "offsetMinX": 20,
+              "offsetMinY": 64,
+              "offsetMaxX": 620,
+              "offsetMaxY": 96,
+              "text": "Move with A/D or ←/→ · gamepad left stick",
+              "color": "#c8d4e2",
+              "fontSize": 15,
+              "align": "left"
+            }
+          }
+        ]
+      },
+      {
+        "id": "ui-logo",
+        "components": [
+          {
+            "typeId": "engine.transform2d",
+            "version": 1,
+            "data": {
+              "x": 0,
+              "y": 0,
+              "rotation": 0,
+              "scaleX": 1,
+              "scaleY": 1
+            }
+          },
+          {
+            "typeId": "engine.parent",
+            "version": 1,
+            "data": {
+              "parentId": "ui-canvas"
+            }
+          },
+          {
+            "typeId": "engine.name",
+            "version": 1,
+            "data": {
+              "value": "Logo Image"
+            }
+          },
+          {
+            "typeId": "engine.uiImage",
+            "version": 1,
+            "data": {
+              "anchorMinX": 1,
+              "anchorMinY": 0,
+              "anchorMaxX": 1,
+              "anchorMaxY": 0,
+              "offsetMinX": -64,
+              "offsetMinY": 18,
+              "offsetMaxX": -20,
+              "offsetMaxY": 62,
+              "asset": {
+                "assetId": "asset:showcase:sheet"
+              },
+              "fit": "contain"
+            }
+          }
+        ]
+      },
+      {
+        "id": "start-button",
+        "components": [
+          {
+            "typeId": "engine.transform2d",
+            "version": 1,
+            "data": {
+              "x": 0,
+              "y": 0,
+              "rotation": 0,
+              "scaleX": 1,
+              "scaleY": 1
+            }
+          },
+          {
+            "typeId": "engine.parent",
+            "version": 1,
+            "data": {
+              "parentId": "ui-canvas"
+            }
+          },
+          {
+            "typeId": "engine.name",
+            "version": 1,
+            "data": {
+              "value": "Start Button"
+            }
+          },
+          {
+            "typeId": "engine.uiButton",
+            "version": 1,
+            "data": {
+              "anchorMinX": 0.04,
+              "anchorMinY": 0.82,
+              "anchorMaxX": 0.04,
+              "anchorMaxY": 0.82,
+              "offsetMinX": 0,
+              "offsetMinY": 0,
+              "offsetMaxX": 190,
+              "offsetMaxY": 54,
+              "text": "Start Adventure",
+              "color": "#ffffff",
+              "background": "#55458b",
+              "fontSize": 18,
+              "disabled": false
+            }
+          }
+        ]
+      },
+      {
+        "id": "parallax:sky",
+        "components": [
+          {
+            "typeId": "engine.transform2d",
+            "version": 1,
+            "data": {
+              "x": 0,
+              "y": 2,
+              "rotation": 0,
+              "scaleX": 1,
+              "scaleY": 1
+            }
+          },
+          {
+            "typeId": "engine.name",
+            "version": 1,
+            "data": {
+              "value": "Parallax Sky"
+            }
+          },
+          {
+            "typeId": "engine.spriteRenderer2d",
+            "version": 2,
+            "data": {
+              "asset": {
+                "assetId": "asset:showcase:background:0"
+              },
+              "region": null,
+              "width": 32,
+              "height": 16,
+              "order": -30,
+              "tint": "#ffffff"
+            }
+          },
+          {
+            "typeId": "engine.parallax2d",
+            "version": 1,
+            "data": {
+              "factorX": 0,
+              "factorY": 0,
+              "repeatX": true,
+              "repeatY": true,
+              "originX": 0,
+              "originY": 2
+            }
+          }
+        ]
+      },
+      {
+        "id": "parallax:mountains",
+        "components": [
+          {
+            "typeId": "engine.transform2d",
+            "version": 1,
+            "data": {
+              "x": 0,
+              "y": 2,
+              "rotation": 0,
+              "scaleX": 1,
+              "scaleY": 1
+            }
+          },
+          {
+            "typeId": "engine.name",
+            "version": 1,
+            "data": {
+              "value": "Parallax Mountains"
+            }
+          },
+          {
+            "typeId": "engine.spriteRenderer2d",
+            "version": 2,
+            "data": {
+              "asset": {
+                "assetId": "asset:showcase:background:1"
+              },
+              "region": null,
+              "width": 32,
+              "height": 16,
+              "order": -20,
+              "tint": "#ffffff"
+            }
+          },
+          {
+            "typeId": "engine.parallax2d",
+            "version": 1,
+            "data": {
+              "factorX": 0.15,
+              "factorY": 0.05,
+              "repeatX": true,
+              "repeatY": false,
+              "originX": 0,
+              "originY": 2
+            }
+          }
+        ]
+      },
+      {
+        "id": "parallax:hills",
+        "components": [
+          {
+            "typeId": "engine.transform2d",
+            "version": 1,
+            "data": {
+              "x": 0,
+              "y": 2,
+              "rotation": 0,
+              "scaleX": 1,
+              "scaleY": 1
+            }
+          },
+          {
+            "typeId": "engine.name",
+            "version": 1,
+            "data": {
+              "value": "Parallax Hills"
+            }
+          },
+          {
+            "typeId": "engine.spriteRenderer2d",
+            "version": 2,
+            "data": {
+              "asset": {
+                "assetId": "asset:showcase:background:2"
+              },
+              "region": null,
+              "width": 32,
+              "height": 16,
+              "order": -10,
+              "tint": "#ffffff"
+            }
+          },
+          {
+            "typeId": "engine.parallax2d",
+            "version": 1,
+            "data": {
+              "factorX": 0.5,
+              "factorY": 0.2,
+              "repeatX": true,
+              "repeatY": false,
+              "originX": 0,
+              "originY": 2
+            }
+          }
+        ]
+      }
+    ]
+  },
+  "scripts": {
+    "scripts/player.ts": "// Isolated for the duration of Play; edits apply after Stop and the next Play.\nfunction onStart(api: engine.ScriptApi) {\n  api.on('ui.button.clicked', (event, current) => {\n    if (!event.payload || typeof event.payload !== 'object' || !('entityId' in event.payload) || event.payload.entityId !== 'start-button') return;\n    const button = current.getEntityComponent('start-button', 'engine.uiButton');\n    if (button) current.setEntityComponent('start-button', 'engine.uiButton', { ...button, text: 'Adventure Started!' });\n    current.emit('audio.play', { entityId: 'player' });\n  });\n  api.on('showcase.position.graph', (event, current) => {\n    if (!event.payload || typeof event.payload !== 'object' || !('x' in event.payload)) return;\n    const label = current.getEntityComponent('ui-status', 'engine.uiText');\n    if (label) current.setEntityComponent('ui-status', 'engine.uiText', { ...label, text: 'Player position: ' + Number(event.payload.x).toFixed(1) + ' · code → nodes → code' });\n  });\n}\n\nfunction onUpdate(api: engine.ScriptApi) {\n  const transform = api.getComponent('engine.transform2d');\n  const move = api.input.actions.moveX?.value ?? 0;\n  if (transform && move !== 0) {\n    const next = { ...transform, x: transform.x + move * api.properties.speed * api.deltaTime };\n    api.setComponent('engine.transform2d', next);\n    api.emit('showcase.position.code', { x: next.x, y: next.y });\n  }\n}\n",
+    "scripts/crate.ts": "// This file is bound to the Physics Crate in the Hierarchy.\n// onStart runs once per Play; onUpdate runs each simulation frame.\nfunction onUpdate(api: engine.ScriptApi) {\n  const transform = api.getComponent('engine.transform2d');\n  if (!transform) return;\n  api.setComponent('engine.transform2d', {\n    ...transform,\n    rotation: transform.rotation + api.deltaTime * api.properties.speed,\n  });\n}\n\nfunction onStop(_api: engine.ScriptApi) {\n  // Runtime-only cleanup belongs here. Stop restores the edited scene copy.\n}\n"
+  },
+  "scriptProperties": {
+    "speed": 4
+  },
+  "visualGraphs": {
+    "scripts/player.graph.json": {
+      "version": 1,
+      "nodes": [
+        {
+          "id": "start",
+          "kind": "event.onStart",
+          "x": 40,
+          "y": 70,
+          "data": {}
+        },
+        {
+          "id": "on-code-position",
+          "kind": "event.onEvent",
+          "x": 270,
+          "y": 230,
+          "data": {
+            "eventType": "showcase.position.code"
+          }
+        },
+        {
+          "id": "subscribe",
+          "kind": "event.subscribe",
+          "x": 270,
+          "y": 70,
+          "data": {
+            "eventType": "showcase.position.code"
+          }
+        },
+        {
+          "id": "payload",
+          "kind": "event.payload",
+          "x": 270,
+          "y": 220,
+          "data": {
+            "eventType": "showcase.position.code"
+          }
+        },
+        {
+          "id": "emit",
+          "kind": "event.emit",
+          "x": 560,
+          "y": 70,
+          "data": {
+            "eventType": "showcase.position.graph"
+          }
+        },
+        {
+          "id": "end",
+          "kind": "flow.end",
+          "x": 850,
+          "y": 70,
+          "data": {}
+        },
+        {
+          "id": "event-end",
+          "kind": "flow.end",
+          "x": 850,
+          "y": 230,
+          "data": {}
+        }
+      ],
+      "links": [
+        {
+          "id": "flow-1",
+          "from": {
+            "nodeId": "start",
+            "portId": "then"
+          },
+          "to": {
+            "nodeId": "subscribe",
+            "portId": "exec"
+          }
+        },
+        {
+          "id": "flow-event",
+          "from": {
+            "nodeId": "on-code-position",
+            "portId": "then"
+          },
+          "to": {
+            "nodeId": "emit",
+            "portId": "exec"
+          }
+        },
+        {
+          "id": "payload-1",
+          "from": {
+            "nodeId": "payload",
+            "portId": "value"
+          },
+          "to": {
+            "nodeId": "emit",
+            "portId": "payload"
+          }
+        },
+        {
+          "id": "flow-2",
+          "from": {
+            "nodeId": "subscribe",
+            "portId": "then"
+          },
+          "to": {
+            "nodeId": "end",
+            "portId": "exec"
+          }
+        },
+        {
+          "id": "flow-3",
+          "from": {
+            "nodeId": "emit",
+            "portId": "then"
+          },
+          "to": {
+            "nodeId": "event-end",
+            "portId": "exec"
+          }
+        }
+      ]
+    },
+    "scripts/gem.graph.json": {
+      "version": 1,
+      "nodes": [
+        {
+          "id": "start",
+          "kind": "event.onUpdate",
+          "x": 40,
+          "y": 70,
+          "data": {}
+        },
+        {
+          "id": "two",
+          "kind": "value.number",
+          "x": 220,
+          "y": 210,
+          "data": {
+            "value": 2
+          }
+        },
+        {
+          "id": "one",
+          "kind": "value.number",
+          "x": 220,
+          "y": 360,
+          "data": {
+            "value": 1
+          }
+        },
+        {
+          "id": "compare",
+          "kind": "compare.greater",
+          "x": 440,
+          "y": 260,
+          "data": {}
+        },
+        {
+          "id": "branch",
+          "kind": "flow.branch",
+          "x": 650,
+          "y": 70,
+          "data": {}
+        },
+        {
+          "id": "set",
+          "kind": "variable.set",
+          "x": 880,
+          "y": 20,
+          "data": {
+            "name": "gemIsReady"
+          }
+        },
+        {
+          "id": "trueValue",
+          "kind": "value.number",
+          "x": 660,
+          "y": 260,
+          "data": {
+            "value": 1
+          }
+        },
+        {
+          "id": "end",
+          "kind": "flow.end",
+          "x": 1100,
+          "y": 70,
+          "data": {}
+        }
+      ],
+      "links": [
+        {
+          "id": "flow-1",
+          "from": {
+            "nodeId": "start",
+            "portId": "then"
+          },
+          "to": {
+            "nodeId": "branch",
+            "portId": "exec"
+          }
+        },
+        {
+          "id": "left",
+          "from": {
+            "nodeId": "two",
+            "portId": "value"
+          },
+          "to": {
+            "nodeId": "compare",
+            "portId": "a"
+          }
+        },
+        {
+          "id": "right",
+          "from": {
+            "nodeId": "one",
+            "portId": "value"
+          },
+          "to": {
+            "nodeId": "compare",
+            "portId": "b"
+          }
+        },
+        {
+          "id": "condition",
+          "from": {
+            "nodeId": "compare",
+            "portId": "value"
+          },
+          "to": {
+            "nodeId": "branch",
+            "portId": "condition"
+          }
+        },
+        {
+          "id": "true-path",
+          "from": {
+            "nodeId": "branch",
+            "portId": "true"
+          },
+          "to": {
+            "nodeId": "set",
+            "portId": "exec"
+          }
+        },
+        {
+          "id": "set-value",
+          "from": {
+            "nodeId": "trueValue",
+            "portId": "value"
+          },
+          "to": {
+            "nodeId": "set",
+            "portId": "value"
+          }
+        },
+        {
+          "id": "flow-2",
+          "from": {
+            "nodeId": "set",
+            "portId": "then"
+          },
+          "to": {
+            "nodeId": "end",
+            "portId": "exec"
+          }
+        }
+      ]
+    }
+  },
+  "prefabs": [
+    {
+      "format": "ecs-prefab",
+      "version": 1,
+      "prefabId": "prefab:bouncy-crate",
+      "name": "Bouncy Crate",
+      "scene": {
+        "format": "ecs-scene",
+        "version": 1,
+        "sceneId": "scene:prefab:bouncy-crate",
+        "entities": [
+          {
+            "id": "crate",
+            "components": [
+              {
+                "typeId": "engine.transform2d",
+                "version": 1,
+                "data": {
+                  "x": 1.2,
+                  "y": 4,
+                  "rotation": 0,
+                  "scaleX": 1,
+                  "scaleY": 1
+                }
+              },
+              {
+                "typeId": "engine.name",
+                "version": 1,
+                "data": {
+                  "value": "Physics Crate"
+                }
+              },
+              {
+                "typeId": "engine.spriteRenderer2d",
+                "version": 2,
+                "data": {
+                  "asset": {
+                    "assetId": "asset:showcase:sheet"
+                  },
+                  "region": {
+                    "atlasId": "atlas:showcase:main",
+                    "regionId": "region:stone"
+                  },
+                  "width": 0.9,
+                  "height": 0.9,
+                  "order": 2,
+                  "tint": "#ffc46d"
+                }
+              },
+              {
+                "typeId": "engine.physics2d",
+                "version": 1,
+                "data": {
+                  "bodyType": "Dynamic",
+                  "gravityScale": 1
+                }
+              },
+              {
+                "typeId": "engine.collider2d",
+                "version": 1,
+                "data": {
+                  "shape": "Box",
+                  "friction": 0.7,
+                  "restitution": 0.45,
+                  "sensor": false,
+                  "groups": 1,
+                  "mask": 65535
+                }
+              },
+              {
+                "typeId": "engine.scriptBinding",
+                "version": 2,
+                "data": {
+                  "enabled": true,
+                  "codePath": "scripts/crate.ts",
+                  "graphPath": "",
+                  "speed": 1
+                }
+              }
+            ]
+          }
+        ]
+      },
+      "rootEntityId": "crate"
+    }
+  ],
+  "atlases": [
+    {
+      "id": "atlas:showcase:main",
+      "name": "Showcase Sprite Sheet",
+      "assetId": "asset:showcase:sheet",
+      "width": 64,
+      "height": 16,
+      "regions": [
+        {
+          "id": "region:hero",
+          "name": "Hero",
+          "x": 0,
+          "y": 0,
+          "width": 16,
+          "height": 16,
+          "pivotX": 0.5,
+          "pivotY": 0.5
+        },
+        {
+          "id": "region:grass",
+          "name": "Grass Tile",
+          "x": 16,
+          "y": 0,
+          "width": 16,
+          "height": 16,
+          "pivotX": 0.5,
+          "pivotY": 0.5
+        },
+        {
+          "id": "region:stone",
+          "name": "Stone Tile",
+          "x": 32,
+          "y": 0,
+          "width": 16,
+          "height": 16,
+          "pivotX": 0.5,
+          "pivotY": 0.5
+        },
+        {
+          "id": "region:gem",
+          "name": "Gem",
+          "x": 48,
+          "y": 0,
+          "width": 16,
+          "height": 16,
+          "pivotX": 0.5,
+          "pivotY": 0.5
+        }
+      ]
+    }
+  ],
+  "inputActions": [
+    {
+      "name": "moveX",
+      "bindings": [
+        {
+          "type": "key",
+          "code": "KeyA",
+          "value": -1
+        },
+        {
+          "type": "key",
+          "code": "ArrowLeft",
+          "value": -1
+        },
+        {
+          "type": "key",
+          "code": "KeyD",
+          "value": 1
+        },
+        {
+          "type": "key",
+          "code": "ArrowRight",
+          "value": 1
+        },
+        {
+          "type": "gamepadAxis",
+          "axis": 0,
+          "scale": 1
+        }
+      ]
+    },
+    {
+      "name": "moveY",
+      "bindings": [
+        {
+          "type": "key",
+          "code": "KeyS",
+          "value": -1
+        },
+        {
+          "type": "key",
+          "code": "ArrowDown",
+          "value": -1
+        },
+        {
+          "type": "key",
+          "code": "KeyW",
+          "value": 1
+        },
+        {
+          "type": "key",
+          "code": "ArrowUp",
+          "value": 1
+        },
+        {
+          "type": "gamepadAxis",
+          "axis": 1,
+          "scale": -1
+        }
+      ]
+    },
+    {
+      "name": "jump",
+      "bindings": [
+        {
+          "type": "key",
+          "code": "Space",
+          "value": 1
+        },
+        {
+          "type": "gamepadButton",
+          "button": 0,
+          "value": 1
+        }
+      ]
+    },
+    {
+      "name": "interact",
+      "bindings": [
+        {
+          "type": "pointerButton",
+          "button": 0,
+          "value": 1
+        },
+        {
+          "type": "gamepadButton",
+          "button": 1,
+          "value": 1
+        }
+      ]
+    }
+  ],
+  "assets": [
+    {
+      "assetId": "asset:showcase:background:0",
+      "path": "Textures/Parallax-Sky.png",
+      "name": "Parallax-Sky.png",
+      "kind": "image",
+      "mimeType": "image/png",
+      "size": 209,
+      "revision": 1,
+      "data": "iVBORw0KGgoAAAANSUhEUgAAAIAAAABACAYAAADS1n9/AAAAmElEQVR4nO3SIQEAIBDAwA9CAZLQPxHEQOzE+YnN2ufSNb8DMAAGwAAYAANgAAyAATAABsAAGAADYAAMgAEwAAbAABgAA2AADIABMAAGwAAYAANgAAyAATAABsAAGAADYAAMgAEwAAbAAHEGiDNAnAHiDBBngDgDxBkgzgBxBogzQJwB4gwQZ4A4A8QZIM4AcQaIM0CcAeIenRdi4DqgisMAAAAASUVORK5CYII="
+    },
+    {
+      "assetId": "asset:showcase:background:1",
+      "path": "Textures/Parallax-Mountains.png",
+      "name": "Parallax-Mountains.png",
+      "kind": "image",
+      "mimeType": "image/png",
+      "size": 322,
+      "revision": 1,
+      "data": "iVBORw0KGgoAAAANSUhEUgAAAIAAAABACAYAAADS1n9/AAABCUlEQVR4nO3SywkCARgDYVuyBOuw/zoUD4J4EPGxs7v/N5B7JuRwAAAAAAAAAAAAAAAAAICfcTydL3WHktH+N/l76i4FY/0fxZ9Td1uC0f6v5CeMMNb/HfE9DzHa/xP5PY0w1v8b8T0MMdr/l/JbHGGs/z/EtzTEaP8l5Nc8wlj/JcXXOMRo/1J+DSPU7pl/LV0PUbtm/rVkPUTtlvrXYvUItVPmX8vUQ9QOqX8tUI9Qd8/869L1EHXX1L8uWo9Qd8z863L1EHWn1L8uVI9Qd8n86xISn6AuIA4gDiAOIA4gDiAOIA4gDiAOIA4gDiAOIA4gDiAOIA4gDiAOIA4gDiAOIA4gDiAf5wqczJQq+zvlLgAAAABJRU5ErkJggg=="
+    },
+    {
+      "assetId": "asset:showcase:background:2",
+      "path": "Textures/Parallax-Hills.png",
+      "name": "Parallax-Hills.png",
+      "kind": "image",
+      "mimeType": "image/png",
+      "size": 259,
+      "revision": 1,
+      "data": "iVBORw0KGgoAAAANSUhEUgAAAIAAAABACAYAAADS1n9/AAAAyklEQVR4nO3SQQrCMBQE0N7H8wje/yKKS0GLlKaTMO/B7JM/s20AAAAAAAAAAAAAAAAAAAAA7Lo97s/0GzjZu9RRSf+NL0YWbhATShZuECHpYo3hYunyDCIgXVBkDO3LSBeRzscB0mVcKX34WfLzEOmCRkgfe8b8fZR0eUekj7tCDh0pXeye9EFXyykHU/i6GXJAha8TBy2PAZTHAMpjAOUxgPIYQHkMoDwGUB4DKI8BlMcAymMA5TGA8hhAeQygPAZQHgMojwGU5wVjnY65nOB2BQAAAABJRU5ErkJggg=="
+    },
+    {
+      "assetId": "asset:showcase:sheet",
+      "path": "Textures/Showcase-Spritesheet.png",
+      "name": "Showcase-Spritesheet.png",
+      "kind": "image",
+      "mimeType": "image/png",
+      "size": 276,
+      "revision": 1,
+      "data": "iVBORw0KGgoAAAANSUhEUgAAAEAAAAAQCAYAAACm53kpAAAA20lEQVR4nGNgoBB4boj+TwmevXDd//SCFqyYGDlK3U8xoDQAKPH8sA0AUlIFIff932dOWiD9vzXtPz5M6wAgNUsQ8jwM0ywAzFtc/1OCKfE8vgBA9jxJgQDzqIicEYrHYXx09aV+Zv8pwZR4HlcAoHj8+zrSAsFy3Yf/+DAtAoCSmoCg52GY2ECgdwBQsxrE6XlSAmEgUgA1qkGCnic2EAZDAJBbDQ6LFEBpNTjkygBaVINDrhagdjWIEQiktAOGejWIKxCI8jw5YDBVg7gCgWaep0YAUKsaJBcAAGi4jc+mkDtMAAAAAElFTkSuQmCC"
+    },
+    {
+      "assetId": "asset:showcase:chime",
+      "path": "Audio/Chime.wav",
+      "name": "Chime.wav",
+      "kind": "audio",
+      "mimeType": "audio/wav",
+      "size": 2249,
+      "revision": 1,
+      "data": "UklGRsEIAABXQVZFZm10IBAAAAABAAEAIlYAACJWAAABAAgAZGF0YZ0IAACAgICBgYKCg4SEhISEhIOCgYB+fHt5eHZ1dXR1dXZ4enx/goWIio2PkZKTk5KRjoyIhYB8eHRwbGlnZmZmaGptcXZ7gYeMkpebnqCioqGem5aRioR9dm9oYl5aWFdXWVxhZ252foePlp2jqKutrauopJ6YkIh/d29nYVtXVFNTVVleZGtye4OLk5uhpqqsrayqpqGak4uDenJqY11ZVVNTVFdbYWhvd4CIkJiepKmrra2rqKOdlo+GfnZuZmBaVlRTVFZaX2VsdHyFjZWcoqeqrK2sqaWgmZKKgXlxaWJcWFVTU1VYXGJpcXmBipKZoKWprK2tqqeinJWNhXx0bGVfWlZUU1RWWmBmbXV+ho6WnaOoq62trKmkn5iQiIB3b2hhXFdUU1NVWV1janJ6g4uTmqGmqqytrKqmoZuUjIN7c2tkXllVU1NUV1thZ293f4iQl56kqKutrauoo52Xj4d+dm5mYFtXVFNUVlleZGxzfISNlJyip6qsrayppaCakoqCeXFpY11YVVNTVVhcYmlweIGJkZmfpamsra2rp6KclY2FfXRsZV9aVlRTVFZaX2ZtdX2Gjpado6erra2sqaSfmJGJgHhwaGFcV1RTU1VYXWNqcnqCi5OaoKaqrK2sqqahm5SMhHtza2ReWVZTU1RXW2BnbnZ/h4+XnqSoq62tq6iknpePh392bmdgW1dUU1RWWV5ka3N7hIyUm6GmqqytrKqmoJqSioJ6cWpjXVhVU1NVV1xiaHB4gImRmJ+lqaytrauno52WjoZ9dW1mX1pWVFNUVlpfZW11fYWOlZyip6utrayppZ+ZkYmBeHBoYlxYVVNTVVhdY2pxeYKKkpqgpamsrayqp6KblIyEfHNrZF5ZVlRTVFdbYGdudn6Hj5eeo6irra2rqKSel5CHf3dvZ2FbV1RTU1VZXmRrc3uDjJSboaaqrK2sqqahmpOLgnpyamNdWFVTU1RXXGFob3iAiJGYn6SprK2tq6ijnZaOhn51bWZfWlZUU1RWWl9lbHR9hY2VnKKnq62trKmln5mRiYF5cGliXFhVU1NVWF1iaXF5goqSmaClqaytrKqnopyVjYR8dGxlXllWVFNUV1tgZm52foePlp2jqKutrauopJ6YkIh/d29nYVtXVFNTVVleZGtye4OLk5uhpqqsrayqpqGak4uDenJqY11ZVVNTVFdbYWhvd4CIkJiepKmrra2rqKOdlo+GfnZuZmBaVlRTVFZaX2VsdHyFjZWcoqeqrK2sqaWgmZKKgXlxaWJcWFVTU1VYXGJpcXmBipKZoKWprK2tqqeinJWNhXx0bGVfWlZUU1RWWmBmbXV+ho6WnaOoq62trKmkn5iQiIB3b2hhXFdUU1NVWV1janJ6g4uTmqGmqqytrKqmoZuUjIN7c2tkXllVU1NUV1thZ293f4iQl56kqKutrauoo52Xj4d+dm5mYFtXVFNUVlleZGxzfISNlJyip6qsrayppaCakoqCeXFpY11YVVNTVVhcYmlweIGJkZmfpamsra2rp6KclY2FfXRsZV9aVlRTVFZaX2ZtdX2Gjpado6erra2sqaSfmJGJgHhwaGFcV1RTU1VYXWNqcnqCi5OaoKaqrK2sqqahm5SMhHtza2ReWVZTU1RXW2BnbnZ/h4+XnqSoq62tq6iknpePh392bmdgW1dUU1RWWV5ka3N7hIyUm6GmqqytrKqmoJqSioJ6cWpjXVhVU1NVV1xiaHB4gImRmJ+lqaytrauno52WjoZ9dW1mX1pWVFNUVlpfZW11fYWOlZyip6utrayppZ+ZkYmBeHBoYlxYVVNTVVhdY2pxeYKKkpqgpamsrayqp6KblIyEfHNrZF5ZVlRTVFdbYGdudn6Hj5eeo6irra2rqKSel5CHf3dvZ2FbV1RTU1VZXmRrc3uDjJSboaaqrK2sqqahmpOLgnpyamNdWFVTU1RXXGFob3iAiJGYn6SprK2tq6ijnZaOhn51bWZfWlZUU1RWWl9lbHR9hY2VnKKnq62trKmln5mRiYF5cGliXFhVU1NVWF1iaXF5goqSmaClqaytrKqnopyVjYR8dGxlXllWVFNUV1tgZm52foePlp2jqKutrauopJ6YkIh/d29nYVtXVFNTVVleZGtye4OLk5uhpqqsrayqpqGak4uDenJqY11ZVVNTVFdbYWhvd4CIkJiepKmrra2rqKOdlo+GfnZuZmBaVlRTVFZaX2VsdHyFjZWcoqeqrK2sqaWgmZKKgXlxaWJcWFVTU1VYXGJpcXmBipKZn6Wpq6ysqqahm5SNhXx0bWZgW1hWVVZZXGFobnZ+ho2Vm6ClqKmpqKWhnJaPh4B4cWpkX1xZWFlaXWJnbXR7goqQl5ygpKampqSgnJeQioN8dW5pZGBdW1tcX2JnbHJ5f4aNk5icoKKjo6Kfm5eRjIV/eHJtaGRhX15fYGNnbHF3fYOJj5SYnJ+goJ+em5eSjYeBe3ZwbGhkYmFhYmVobHB1e4GGi5CVmJudnZ2cmZaSjomDfnl0b2toZmVkZWZpbHB0eX6DiI2RlZeZmpqZmJWSjoqFgHt3c29saWhnZ2hqbXB0eH2BhoqOkZSWl5eXlpSRjoqGgn55dnJvbWtqamtsbnF0eHx/g4eLjpCSlJSUk5KQjYqHg398eHVycG9ubW1ucHJ1eHt+goWIi42PkJGRkZCOjIqHhIF+e3h1c3JxcHBxcnR2eHt9gIOGiIqMjY6Ojo2Mi4mHhIJ/fXp4dnV0c3N0dHV3eXt9f4GEhoeJiouLi4uKiYiGhIKAfnx7eXh3dnZ2d3h5ent9f4CChIWGh4iIiIiIh4aFg4KBf359fHt6eXl5enp7e3x+f4CBgoOEhIWFhYWFhYSDgoKBgH9+fn19fHx8fH19fX5+f4CAgYGCgoKCgoKCgoKBgYGAgICAf39/f39/f3+AgICAgIA="
+    }
+  ]
+}

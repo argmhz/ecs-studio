@@ -1,0 +1,780 @@
+{
+  "format": "ecs-project",
+  "version": 7,
+  "projectName": "Pong",
+  "scene": {
+    "format": "ecs-scene",
+    "version": 1,
+    "sceneId": "scene:pong",
+    "entities": [
+      {
+        "id": "left-paddle",
+        "components": [
+          {
+            "typeId": "engine.transform2d",
+            "version": 1,
+            "data": {
+              "x": -4.5,
+              "y": 0,
+              "rotation": 0,
+              "scaleX": 1,
+              "scaleY": 1
+            }
+          },
+          {
+            "typeId": "engine.name",
+            "version": 1,
+            "data": {
+              "value": "Left Paddle · W / S"
+            }
+          },
+          {
+            "typeId": "engine.spriteRenderer2d",
+            "version": 2,
+            "data": {
+              "asset": {
+                "assetId": "asset:pong:white-pixel"
+              },
+              "region": null,
+              "width": 0.22,
+              "height": 1.45,
+              "tint": "#77c8ff",
+              "order": 2
+            }
+          }
+        ]
+      },
+      {
+        "id": "right-paddle",
+        "components": [
+          {
+            "typeId": "engine.transform2d",
+            "version": 1,
+            "data": {
+              "x": 4.5,
+              "y": 0,
+              "rotation": 0,
+              "scaleX": 1,
+              "scaleY": 1
+            }
+          },
+          {
+            "typeId": "engine.name",
+            "version": 1,
+            "data": {
+              "value": "Right Paddle · A / D"
+            }
+          },
+          {
+            "typeId": "engine.spriteRenderer2d",
+            "version": 2,
+            "data": {
+              "asset": {
+                "assetId": "asset:pong:white-pixel"
+              },
+              "region": null,
+              "width": 0.22,
+              "height": 1.45,
+              "tint": "#ffbd70",
+              "order": 2
+            }
+          }
+        ]
+      },
+      {
+        "id": "ball",
+        "components": [
+          {
+            "typeId": "engine.transform2d",
+            "version": 1,
+            "data": {
+              "x": 0,
+              "y": 0,
+              "rotation": 0,
+              "scaleX": 1,
+              "scaleY": 1
+            }
+          },
+          {
+            "typeId": "engine.name",
+            "version": 1,
+            "data": {
+              "value": "Ball"
+            }
+          },
+          {
+            "typeId": "engine.spriteRenderer2d",
+            "version": 2,
+            "data": {
+              "asset": {
+                "assetId": "asset:pong:white-pixel"
+              },
+              "region": null,
+              "width": 0.28,
+              "height": 0.28,
+              "tint": "#ffffff",
+              "order": 3
+            }
+          }
+        ]
+      },
+      {
+        "id": "top-wall",
+        "components": [
+          {
+            "typeId": "engine.transform2d",
+            "version": 1,
+            "data": {
+              "x": 0,
+              "y": 3.35,
+              "rotation": 0,
+              "scaleX": 1,
+              "scaleY": 1
+            }
+          },
+          {
+            "typeId": "engine.name",
+            "version": 1,
+            "data": {
+              "value": "Top Wall"
+            }
+          },
+          {
+            "typeId": "engine.spriteRenderer2d",
+            "version": 2,
+            "data": {
+              "asset": {
+                "assetId": "asset:pong:white-pixel"
+              },
+              "region": null,
+              "width": 11,
+              "height": 0.08,
+              "tint": "#424b5d",
+              "order": 1
+            }
+          }
+        ]
+      },
+      {
+        "id": "bottom-wall",
+        "components": [
+          {
+            "typeId": "engine.transform2d",
+            "version": 1,
+            "data": {
+              "x": 0,
+              "y": -3.35,
+              "rotation": 0,
+              "scaleX": 1,
+              "scaleY": 1
+            }
+          },
+          {
+            "typeId": "engine.name",
+            "version": 1,
+            "data": {
+              "value": "Bottom Wall"
+            }
+          },
+          {
+            "typeId": "engine.spriteRenderer2d",
+            "version": 2,
+            "data": {
+              "asset": {
+                "assetId": "asset:pong:white-pixel"
+              },
+              "region": null,
+              "width": 11,
+              "height": 0.08,
+              "tint": "#424b5d",
+              "order": 1
+            }
+          }
+        ]
+      },
+      {
+        "id": "center-line",
+        "components": [
+          {
+            "typeId": "engine.transform2d",
+            "version": 1,
+            "data": {
+              "x": 0,
+              "y": 0,
+              "rotation": 0,
+              "scaleX": 1,
+              "scaleY": 1
+            }
+          },
+          {
+            "typeId": "engine.name",
+            "version": 1,
+            "data": {
+              "value": "Center Line"
+            }
+          },
+          {
+            "typeId": "engine.spriteRenderer2d",
+            "version": 2,
+            "data": {
+              "asset": {
+                "assetId": "asset:pong:center-line"
+              },
+              "region": null,
+              "width": 0.055,
+              "height": 6.12,
+              "tint": "#485162",
+              "order": 1
+            }
+          }
+        ]
+      },
+      {
+        "id": "game-controller",
+        "components": [
+          {
+            "typeId": "engine.transform2d",
+            "version": 1,
+            "data": {
+              "x": 0,
+              "y": 0,
+              "rotation": 0,
+              "scaleX": 1,
+              "scaleY": 1
+            }
+          },
+          {
+            "typeId": "engine.name",
+            "version": 1,
+            "data": {
+              "value": "Game Controller"
+            }
+          },
+          {
+            "typeId": "engine.scriptBinding",
+            "version": 2,
+            "data": {
+              "enabled": true,
+              "codePath": "scripts/pong.ts",
+              "graphPath": "scripts/score.graph.json",
+              "speed": 5.5
+            }
+          }
+        ]
+      },
+      {
+        "id": "ui-canvas",
+        "components": [
+          {
+            "typeId": "engine.transform2d",
+            "version": 1,
+            "data": {
+              "x": 0,
+              "y": 0,
+              "rotation": 0,
+              "scaleX": 1,
+              "scaleY": 1
+            }
+          },
+          {
+            "typeId": "engine.name",
+            "version": 1,
+            "data": {
+              "value": "UI Canvas"
+            }
+          },
+          {
+            "typeId": "engine.uiCanvas",
+            "version": 1,
+            "data": {
+              "referenceWidth": 800,
+              "referenceHeight": 600,
+              "scaleMode": "fit"
+            }
+          }
+        ]
+      },
+      {
+        "id": "score-left",
+        "components": [
+          {
+            "typeId": "engine.transform2d",
+            "version": 1,
+            "data": {
+              "x": 0,
+              "y": 0,
+              "rotation": 0,
+              "scaleX": 1,
+              "scaleY": 1
+            }
+          },
+          {
+            "typeId": "engine.parent",
+            "version": 1,
+            "data": {
+              "parentId": "ui-canvas"
+            }
+          },
+          {
+            "typeId": "engine.name",
+            "version": 1,
+            "data": {
+              "value": "score-left"
+            }
+          },
+          {
+            "typeId": "engine.uiText",
+            "version": 1,
+            "data": {
+              "anchorMinX": 0,
+              "anchorMinY": 0,
+              "anchorMaxX": 0,
+              "anchorMaxY": 0,
+              "offsetMinX": 310,
+              "offsetMinY": 36,
+              "offsetMaxX": 380,
+              "offsetMaxY": 98,
+              "text": "0",
+              "color": "#e8edf7",
+              "fontSize": 40,
+              "align": "center"
+            }
+          }
+        ]
+      },
+      {
+        "id": "score-separator",
+        "components": [
+          {
+            "typeId": "engine.transform2d",
+            "version": 1,
+            "data": {
+              "x": 0,
+              "y": 0,
+              "rotation": 0,
+              "scaleX": 1,
+              "scaleY": 1
+            }
+          },
+          {
+            "typeId": "engine.parent",
+            "version": 1,
+            "data": {
+              "parentId": "ui-canvas"
+            }
+          },
+          {
+            "typeId": "engine.name",
+            "version": 1,
+            "data": {
+              "value": "score-separator"
+            }
+          },
+          {
+            "typeId": "engine.uiText",
+            "version": 1,
+            "data": {
+              "anchorMinX": 0,
+              "anchorMinY": 0,
+              "anchorMaxX": 0,
+              "anchorMaxY": 0,
+              "offsetMinX": 380,
+              "offsetMinY": 36,
+              "offsetMaxX": 420,
+              "offsetMaxY": 98,
+              "text": "—",
+              "color": "#e8edf7",
+              "fontSize": 26,
+              "align": "center"
+            }
+          }
+        ]
+      },
+      {
+        "id": "score-right",
+        "components": [
+          {
+            "typeId": "engine.transform2d",
+            "version": 1,
+            "data": {
+              "x": 0,
+              "y": 0,
+              "rotation": 0,
+              "scaleX": 1,
+              "scaleY": 1
+            }
+          },
+          {
+            "typeId": "engine.parent",
+            "version": 1,
+            "data": {
+              "parentId": "ui-canvas"
+            }
+          },
+          {
+            "typeId": "engine.name",
+            "version": 1,
+            "data": {
+              "value": "score-right"
+            }
+          },
+          {
+            "typeId": "engine.uiText",
+            "version": 1,
+            "data": {
+              "anchorMinX": 0,
+              "anchorMinY": 0,
+              "anchorMaxX": 0,
+              "anchorMaxY": 0,
+              "offsetMinX": 420,
+              "offsetMinY": 36,
+              "offsetMaxX": 490,
+              "offsetMaxY": 98,
+              "text": "0",
+              "color": "#e8edf7",
+              "fontSize": 40,
+              "align": "center"
+            }
+          }
+        ]
+      },
+      {
+        "id": "game-title",
+        "components": [
+          {
+            "typeId": "engine.transform2d",
+            "version": 1,
+            "data": {
+              "x": 0,
+              "y": 0,
+              "rotation": 0,
+              "scaleX": 1,
+              "scaleY": 1
+            }
+          },
+          {
+            "typeId": "engine.parent",
+            "version": 1,
+            "data": {
+              "parentId": "ui-canvas"
+            }
+          },
+          {
+            "typeId": "engine.name",
+            "version": 1,
+            "data": {
+              "value": "game-title"
+            }
+          },
+          {
+            "typeId": "engine.uiText",
+            "version": 1,
+            "data": {
+              "anchorMinX": 0,
+              "anchorMinY": 0,
+              "anchorMaxX": 0,
+              "anchorMaxY": 0,
+              "offsetMinX": 330,
+              "offsetMinY": 4,
+              "offsetMaxX": 470,
+              "offsetMaxY": 32,
+              "text": "PONG",
+              "color": "#e8edf7",
+              "fontSize": 14,
+              "align": "center"
+            }
+          }
+        ]
+      },
+      {
+        "id": "controls",
+        "components": [
+          {
+            "typeId": "engine.transform2d",
+            "version": 1,
+            "data": {
+              "x": 0,
+              "y": 0,
+              "rotation": 0,
+              "scaleX": 1,
+              "scaleY": 1
+            }
+          },
+          {
+            "typeId": "engine.parent",
+            "version": 1,
+            "data": {
+              "parentId": "ui-canvas"
+            }
+          },
+          {
+            "typeId": "engine.name",
+            "version": 1,
+            "data": {
+              "value": "controls"
+            }
+          },
+          {
+            "typeId": "engine.uiText",
+            "version": 1,
+            "data": {
+              "anchorMinX": 0,
+              "anchorMinY": 0,
+              "anchorMaxX": 0,
+              "anchorMaxY": 0,
+              "offsetMinX": 180,
+              "offsetMinY": 560,
+              "offsetMaxX": 620,
+              "offsetMaxY": 584,
+              "text": "W / S  ·  LEFT PLAYER                         RIGHT PLAYER  ·  A / D",
+              "color": "#e8edf7",
+              "fontSize": 12,
+              "align": "center"
+            }
+          }
+        ]
+      }
+    ]
+  },
+  "scripts": {
+    "scripts/pong.ts": "// This script belongs to Game Controller and coordinates the other scene objects.\n// W/S move the left paddle; A/D move the right paddle.\ntype Transform = engine.Components['engine.transform2d'];\ntype PongState = {\n  velocityX: number;\n  velocityY: number;\n  serveTimer: number;\n  leftScore: number;\n  rightScore: number;\n};\n\nconst ARENA = {\n  paddleX: 4.5,\n  paddleHalfWidth: 0.11,\n  paddleReach: 0.92,\n  paddleLimit: 2.55,\n  ballLimitY: 3.05,\n  goalX: 5.35,\n  initialVelocityX: 4.1,\n  initialVelocityY: 0.7,\n  maximumVelocityX: 6.5,\n};\n\nfunction onStart(api: engine.ScriptApi) {\n  api.subscribe('pong.scored');\n}\n\nfunction readState(value: unknown): PongState {\n  if (!value || typeof value !== 'object' || Array.isArray(value)) {\n    return {\n      velocityX: ARENA.initialVelocityX,\n      velocityY: ARENA.initialVelocityY,\n      serveTimer: 0,\n      leftScore: 0,\n      rightScore: 0,\n    };\n  }\n\n  const saved = value as Partial<PongState>;\n  return {\n    velocityX: saved.velocityX ?? ARENA.initialVelocityX,\n    velocityY: saved.velocityY ?? ARENA.initialVelocityY,\n    serveTimer: saved.serveTimer ?? 0,\n    leftScore: saved.leftScore ?? 0,\n    rightScore: saved.rightScore ?? 0,\n  };\n}\n\nfunction clamp(value: number, minimum: number, maximum: number): number {\n  return Math.max(minimum, Math.min(maximum, value));\n}\n\nfunction movePaddle(\n  transform: Transform,\n  direction: number,\n  speed: number,\n  deltaTime: number,\n): Transform {\n  return {\n    ...transform,\n    y: clamp(\n      transform.y + direction * speed * deltaTime,\n      -ARENA.paddleLimit,\n      ARENA.paddleLimit,\n    ),\n  };\n}\n\nfunction updateBall(\n  api: engine.ScriptApi,\n  ball: Transform,\n  leftPaddle: Transform,\n  rightPaddle: Transform,\n  state: PongState,\n  deltaTime: number,\n): Transform {\n  if (state.serveTimer > 0) {\n    state.serveTimer = Math.max(0, state.serveTimer - deltaTime);\n    return ball;\n  }\n\n  let x = ball.x + state.velocityX * deltaTime;\n  let y = ball.y + state.velocityY * deltaTime;\n\n  if (y > ARENA.ballLimitY || y < -ARENA.ballLimitY) {\n    y = clamp(y, -ARENA.ballLimitY, ARENA.ballLimitY);\n    state.velocityY *= -1;\n  }\n\n  const leftBounce = tryBounceFromPaddle(x, y, leftPaddle, 'left', state);\n  const rightBounce = leftBounce\n    ? false\n    : tryBounceFromPaddle(x, y, rightPaddle, 'right', state);\n\n  if (leftBounce) x = -ARENA.paddleX + ARENA.paddleHalfWidth;\n  if (rightBounce) x = ARENA.paddleX - ARENA.paddleHalfWidth;\n\n  if (x < -ARENA.goalX || x > ARENA.goalX) {\n    const missedLeftPaddle = x < 0;\n    api.emit('pong.point', { scorer: missedLeftPaddle ? 'right' : 'left' });\n    state.velocityX = missedLeftPaddle\n      ? ARENA.initialVelocityX\n      : -ARENA.initialVelocityX;\n    state.velocityY = ARENA.initialVelocityY;\n    state.serveTimer = 0.65;\n    return { ...ball, x: 0, y: 0 };\n  }\n\n  return { ...ball, x, y };\n}\n\nfunction tryBounceFromPaddle(\n  ballX: number,\n  ballY: number,\n  paddle: Transform,\n  side: 'left' | 'right',\n  state: PongState,\n): boolean {\n  const paddleX = side === 'left' ? -ARENA.paddleX : ARENA.paddleX;\n  const isMovingTowardPaddle = side === 'left'\n    ? state.velocityX < 0\n    : state.velocityX > 0;\n  const reachedPaddle = Math.abs(ballX - paddleX) <= ARENA.paddleHalfWidth + 0.14;\n  const hitPaddle = Math.abs(ballY - paddle.y) < ARENA.paddleReach;\n\n  if (!isMovingTowardPaddle || !reachedPaddle || !hitPaddle) return false;\n\n  const hitOffset = (ballY - paddle.y) / ARENA.paddleReach;\n  state.velocityX = clamp(\n    Math.abs(state.velocityX) * 1.04,\n    0,\n    ARENA.maximumVelocityX,\n  ) * (side === 'left' ? 1 : -1);\n  state.velocityY = hitOffset * 2.8;\n  return true;\n}\n\nfunction updateScore(api: engine.ScriptApi, state: PongState): void {\n  let changed = false;\n  for (const event of api.events) {\n    if (event.type !== 'pong.scored') continue;\n    if (!event.payload || typeof event.payload !== 'object' || Array.isArray(event.payload)) continue;\n\n    const scorer = (event.payload as { scorer?: unknown }).scorer;\n    if (scorer === 'left') {\n      state.leftScore += 1;\n      changed = true;\n    }\n    if (scorer === 'right') {\n      state.rightScore += 1;\n      changed = true;\n    }\n  }\n  if (!changed) return;\n\n  const leftScore = api.getEntityComponent('score-left', 'engine.uiText');\n  const rightScore = api.getEntityComponent('score-right', 'engine.uiText');\n  if (leftScore) {\n    api.setEntityComponent('score-left', 'engine.uiText', {\n      ...leftScore,\n      text: String(state.leftScore),\n    });\n  }\n  if (rightScore) {\n    api.setEntityComponent('score-right', 'engine.uiText', {\n      ...rightScore,\n      text: String(state.rightScore),\n    });\n  }\n}\n\nfunction onUpdate(api: engine.ScriptApi) {\n  const leftPaddle = api.getEntityComponent('left-paddle', 'engine.transform2d');\n  const rightPaddle = api.getEntityComponent('right-paddle', 'engine.transform2d');\n  const ball = api.getEntityComponent('ball', 'engine.transform2d');\n  if (!leftPaddle || !rightPaddle || !ball) return;\n\n  const state = readState(api.state);\n  const deltaTime = Math.min(api.deltaTime, 0.05);\n  const paddleSpeed = Number(api.properties.speed ?? 5.5);\n  const nextLeftPaddle = movePaddle(\n    leftPaddle,\n    api.input.actions.moveY?.value ?? 0,\n    paddleSpeed,\n    deltaTime,\n  );\n  const nextRightPaddle = movePaddle(\n    rightPaddle,\n    api.input.actions.moveX?.value ?? 0,\n    paddleSpeed,\n    deltaTime,\n  );\n\n  api.setEntityComponent('left-paddle', 'engine.transform2d', nextLeftPaddle);\n  api.setEntityComponent('right-paddle', 'engine.transform2d', nextRightPaddle);\n  api.setEntityComponent(\n    'ball',\n    'engine.transform2d',\n    updateBall(api, ball, nextLeftPaddle, nextRightPaddle, state, deltaTime),\n  );\n\n  updateScore(api, state);\n  api.state = state;\n}\n"
+  },
+  "scriptProperties": {},
+  "visualGraphs": {
+    "scripts/score.graph.json": {
+      "version": 1,
+      "nodes": [
+        {
+          "id": "start",
+          "kind": "event.onStart",
+          "x": 40,
+          "y": 100,
+          "data": {}
+        },
+        {
+          "id": "subscribe",
+          "kind": "event.subscribe",
+          "x": 230,
+          "y": 100,
+          "data": {
+            "eventType": "pong.point"
+          }
+        },
+        {
+          "id": "on-point",
+          "kind": "event.onEvent",
+          "x": 230,
+          "y": 270,
+          "data": {
+            "eventType": "pong.point"
+          }
+        },
+        {
+          "id": "payload",
+          "kind": "event.payload",
+          "x": 470,
+          "y": 330,
+          "data": {
+            "eventType": "pong.point"
+          }
+        },
+        {
+          "id": "emit",
+          "kind": "event.emit",
+          "x": 700,
+          "y": 100,
+          "data": {
+            "eventType": "pong.scored"
+          }
+        },
+        {
+          "id": "end",
+          "kind": "flow.end",
+          "x": 940,
+          "y": 100,
+          "data": {}
+        },
+        {
+          "id": "start-end",
+          "kind": "flow.end",
+          "x": 470,
+          "y": 400,
+          "data": {}
+        }
+      ],
+      "links": [
+        {
+          "id": "start-subscribe",
+          "from": {
+            "nodeId": "start",
+            "portId": "then"
+          },
+          "to": {
+            "nodeId": "subscribe",
+            "portId": "exec"
+          }
+        },
+        {
+          "id": "subscribe-done",
+          "from": {
+            "nodeId": "subscribe",
+            "portId": "then"
+          },
+          "to": {
+            "nodeId": "start-end",
+            "portId": "exec"
+          }
+        },
+        {
+          "id": "event-flow",
+          "from": {
+            "nodeId": "on-point",
+            "portId": "then"
+          },
+          "to": {
+            "nodeId": "emit",
+            "portId": "exec"
+          }
+        },
+        {
+          "id": "payload",
+          "from": {
+            "nodeId": "payload",
+            "portId": "value"
+          },
+          "to": {
+            "nodeId": "emit",
+            "portId": "payload"
+          }
+        },
+        {
+          "id": "done",
+          "from": {
+            "nodeId": "emit",
+            "portId": "then"
+          },
+          "to": {
+            "nodeId": "end",
+            "portId": "exec"
+          }
+        }
+      ]
+    }
+  },
+  "prefabs": [],
+  "atlases": [],
+  "inputActions": [
+    {
+      "name": "moveX",
+      "bindings": [
+        {
+          "type": "key",
+          "code": "KeyA",
+          "value": -1
+        },
+        {
+          "type": "key",
+          "code": "ArrowLeft",
+          "value": -1
+        },
+        {
+          "type": "key",
+          "code": "KeyD",
+          "value": 1
+        },
+        {
+          "type": "key",
+          "code": "ArrowRight",
+          "value": 1
+        },
+        {
+          "type": "gamepadAxis",
+          "axis": 0,
+          "scale": 1
+        }
+      ]
+    },
+    {
+      "name": "moveY",
+      "bindings": [
+        {
+          "type": "key",
+          "code": "KeyS",
+          "value": -1
+        },
+        {
+          "type": "key",
+          "code": "ArrowDown",
+          "value": -1
+        },
+        {
+          "type": "key",
+          "code": "KeyW",
+          "value": 1
+        },
+        {
+          "type": "key",
+          "code": "ArrowUp",
+          "value": 1
+        },
+        {
+          "type": "gamepadAxis",
+          "axis": 1,
+          "scale": -1
+        }
+      ]
+    },
+    {
+      "name": "jump",
+      "bindings": [
+        {
+          "type": "key",
+          "code": "Space",
+          "value": 1
+        },
+        {
+          "type": "gamepadButton",
+          "button": 0,
+          "value": 1
+        }
+      ]
+    },
+    {
+      "name": "interact",
+      "bindings": [
+        {
+          "type": "pointerButton",
+          "button": 0,
+          "value": 1
+        },
+        {
+          "type": "gamepadButton",
+          "button": 1,
+          "value": 1
+        }
+      ]
+    }
+  ],
+  "assets": [
+    {
+      "assetId": "asset:pong:white-pixel",
+      "path": "Textures/Pong-White.png",
+      "name": "Pong-White.png",
+      "kind": "image",
+      "mimeType": "image/png",
+      "size": 70,
+      "revision": 1,
+      "data": "iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR4nGP4////fwAJ+wP9KobjigAAAABJRU5ErkJggg=="
+    },
+    {
+      "assetId": "asset:pong:center-line",
+      "path": "Textures/Pong-Center-Line.png",
+      "name": "Pong-Center-Line.png",
+      "kind": "image",
+      "mimeType": "image/png",
+      "size": 86,
+      "revision": 1,
+      "data": "iVBORw0KGgoAAAANSUhEUgAAAAQAAABACAYAAAA9ONYEAAAAHUlEQVR4nGP4jwYYyBNAwWQKjLpj1B2j7hha7gAAsqZ8rnEkR0kAAAAASUVORK5CYII="
+    }
+  ]
+}

@@ -1,0 +1,13 @@
+{
+  "name": "@ecs/rendering",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "exports": { ".": "./src/index.ts" },
+  "dependencies": {
+    "@ecs/assets": "*",
+    "@ecs/core": "*",
+    "@ecs/scene": "*",
+    "three": "0.180.0"
+  }
+}
